@@ -15,8 +15,8 @@ import businessInfo from '../data/business-info.json';
           We come to you. Fast, reliable, and professional notarization at your location.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/book" class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
-            Book an Appointment
+          <a href={`tel:${businessInfo.phone}`} class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
+            Call {businessInfo.phone}
           </a>
           <a href="/services" class="bg-primary-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-900 transition border-2 border-white">
             View Services
@@ -60,7 +60,7 @@ import businessInfo from '../data/business-info.json';
         <h2 class="section-title">Our Services</h2>
         <p class="section-subtitle">Comprehensive notary services for all your needs</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <div class="card">
           <h3 class="text-xl font-bold mb-3 text-primary-700">General Notarization</h3>
           <p class="text-gray-600 mb-4">Affidavits, power of attorney, wills, contracts, deeds, and more.</p>
@@ -70,11 +70,6 @@ import businessInfo from '../data/business-info.json';
           <h3 class="text-xl font-bold mb-3 text-primary-700">Mobile Notary</h3>
           <p class="text-gray-600 mb-4">We travel to you for maximum convenience and comfort.</p>
           <a href="/services#mobile-notary" class="text-primary-600 hover:text-primary-800 font-semibold">Learn more →</a>
-        </div>
-        <div class="card">
-          <h3 class="text-xl font-bold mb-3 text-primary-700">Loan Signing</h3>
-          <p class="text-gray-600 mb-4">Certified loan signing agent for real estate closings and refinances.</p>
-          <a href="/services#loan-signing" class="text-primary-600 hover:text-primary-800 font-semibold">Learn more →</a>
         </div>
       </div>
       <div class="text-center mt-8">
@@ -87,10 +82,10 @@ import businessInfo from '../data/business-info.json';
   <section class="section bg-primary-700 text-white">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-      <p class="text-xl mb-8">Schedule your mobile notary appointment today.</p>
+      <p class="text-xl mb-8">Contact us today for professional mobile notary service.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/book" class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
-          Book Now
+        <a href={`tel:${businessInfo.phone}`} class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
+          Call {businessInfo.phone}
         </a>
         <a href={`mailto:${businessInfo.email}`} class="bg-primary-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-900 transition border-2 border-white">
           Email Us
