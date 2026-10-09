@@ -14,7 +14,7 @@ collections:
     files:
       - label: "Business Details"
         name: "business_info"
-        file: "src/content/business-info.json"
+        file: "src/data/business-info.json"
         fields:
           - { label: "Business Name", name: "name", widget: "string" }
           - { label: "Owner Name", name: "owner", widget: "string" }
@@ -69,7 +69,7 @@ collections:
     files:
       - label: "Pricing Information"
         name: "pricing"
-        file: "src/content/pricing.json"
+        file: "src/data/pricing.json"
         fields:
           - label: "Services"
             name: "services"
