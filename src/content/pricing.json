@@ -1,0 +1,59 @@
+{
+  "services": [
+    {
+      "name": "Standard Notarization",
+      "price": "[PLACEHOLDER: e.g., $10 per signature/notarial act - verify Florida maximum fee]",
+      "description": "Per signature notarized (Florida statutory maximum)",
+      "notes": "Florida law sets maximum fees notaries may charge"
+    },
+    {
+      "name": "Mobile Service Fee",
+      "price": "[PLACEHOLDER: e.g., $50 base fee + mileage]",
+      "description": "Travel to your location within service area",
+      "notes": "Additional mileage fees may apply outside base radius"
+    },
+    {
+      "name": "After-Hours Service",
+      "price": "[PLACEHOLDER: e.g., Additional $25-50]",
+      "description": "Evenings (after 7 PM), weekends, and holidays",
+      "notes": "By appointment only"
+    },
+    {
+      "name": "Loan Signing",
+      "price": "[PLACEHOLDER: e.g., $125-200 depending on package]",
+      "description": "Complete loan signing service including travel and scan-backs",
+      "notes": "Price varies by loan type and location"
+    },
+    {
+      "name": "Remote Online Notarization (RON)",
+      "price": "[PLACEHOLDER: e.g., $25-50 per document]",
+      "description": "Online notarization via secure video platform",
+      "notes": "Delete this item if not offering RON"
+    },
+    {
+      "name": "Witness Services",
+      "price": "[PLACEHOLDER: e.g., $10 per witness signature]",
+      "description": "Acting as a witness for documents that require witnesses",
+      "notes": "Separate from notarization fee"
+    }
+  ],
+  "travelFees": {
+    "baseRadius": "[PLACEHOLDER: e.g., 15 miles included in base fee]",
+    "perMile": "[PLACEHOLDER: e.g., $1-2 per mile beyond base radius]",
+    "notes": "Travel fees are in addition to notarization fees"
+  },
+  "paymentMethods": [
+    "Credit/Debit Cards (via Stripe)",
+    "Cash",
+    "Check",
+    "Zelle",
+    "Venmo",
+    "[PLACEHOLDER: Add or remove payment methods as needed]"
+  ],
+  "deposits": {
+    "required": true,
+    "amount": "[PLACEHOLDER: e.g., $25 or 50% of estimated total]",
+    "refundable": false,
+    "notes": "Deposit required to schedule mobile appointments, applied to final invoice"
+  }
+}

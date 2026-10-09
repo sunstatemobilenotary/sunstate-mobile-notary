@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import businessInfo from '../content/business-info.json';
+---
+
+<BaseLayout title="Home">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-700 to-primary-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Professional Mobile Notary Services in Florida
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-primary-100">
+          We come to you. Fast, reliable, and professional notarization at your location.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/book" class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
+            Book an Appointment
+          </a>
+          <a href="/services" class="bg-primary-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-900 transition border-2 border-white">
+            View Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Why Choose Sunstate Mobile Notary?</h2>
+        <p class="section-subtitle">Convenient, professional, and reliable service</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card text-center">
+          <div class="text-primary-600 text-5xl mb-4">📱</div>
+          <h3 class="text-xl font-bold mb-2">Mobile Service</h3>
+          <p class="text-gray-600">We come to your home, office, hospital, or any location convenient for you.</p>
+        </div>
+        <div class="card text-center">
+          <div class="text-primary-600 text-5xl mb-4">⏰</div>
+          <h3 class="text-xl font-bold mb-2">Flexible Hours</h3>
+          <p class="text-gray-600">Evening, weekend, and emergency appointments available to fit your schedule.</p>
+        </div>
+        <div class="card text-center">
+          <div class="text-primary-600 text-5xl mb-4">✓</div>
+          <h3 class="text-xl font-bold mb-2">Experienced & Certified</h3>
+          <p class="text-gray-600">Florida-commissioned notary public, bonded, insured, and background-checked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="section bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive notary services for all your needs</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card">
+          <h3 class="text-xl font-bold mb-3 text-primary-700">General Notarization</h3>
+          <p class="text-gray-600 mb-4">Affidavits, power of attorney, wills, contracts, deeds, and more.</p>
+          <a href="/services#general-notary" class="text-primary-600 hover:text-primary-800 font-semibold">Learn more →</a>
+        </div>
+        <div class="card">
+          <h3 class="text-xl font-bold mb-3 text-primary-700">Mobile Notary</h3>
+          <p class="text-gray-600 mb-4">We travel to you for maximum convenience and comfort.</p>
+          <a href="/services#mobile-notary" class="text-primary-600 hover:text-primary-800 font-semibold">Learn more →</a>
+        </div>
+        <div class="card">
+          <h3 class="text-xl font-bold mb-3 text-primary-700">Loan Signing</h3>
+          <p class="text-gray-600 mb-4">Certified loan signing agent for real estate closings and refinances.</p>
+          <a href="/services#loan-signing" class="text-primary-600 hover:text-primary-800 font-semibold">Learn more →</a>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="/services" class="btn-primary">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-primary-700 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+      <p class="text-xl mb-8">Schedule your mobile notary appointment today.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/book" class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
+          Book Now
+        </a>
+        <a href={`mailto:${businessInfo.email}`} class="bg-primary-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-900 transition border-2 border-white">
+          Email Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area Highlight -->
+  <section class="section bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="section-title">Serving {businessInfo.serviceArea.state}</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        {businessInfo.serviceArea.counties}
+      </p>
+      <a href="/service-area" class="text-primary-600 hover:text-primary-800 font-semibold text-lg">
+        View Full Service Area →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

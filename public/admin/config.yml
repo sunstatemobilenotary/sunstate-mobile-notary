@@ -1,0 +1,111 @@
+backend:
+  name: github
+  repo: sunstatemobilenotary/sunstate-mobile-notary
+  branch: main
+  base_url: https://oauth-proxy.YOURWORKER.workers.dev
+  auth_endpoint: /auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "business_info"
+    label: "Business Information"
+    files:
+      - label: "Business Details"
+        name: "business_info"
+        file: "src/content/business-info.json"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Owner Name", name: "owner", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Service Area"
+            name: "serviceArea"
+            widget: "object"
+            fields:
+              - { label: "State", name: "state", widget: "string" }
+              - { label: "Counties", name: "counties", widget: "text" }
+              - { label: "Cities", name: "cities", widget: "text" }
+              - { label: "Service Radius", name: "radius", widget: "string" }
+          - label: "Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Weekdays", name: "weekdays", widget: "string" }
+              - { label: "Weekends", name: "weekends", widget: "string" }
+              - { label: "Emergency", name: "emergency", widget: "string" }
+          - label: "Social Media"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+              - { label: "Google Business", name: "google", widget: "string", required: false }
+          - label: "Credentials"
+            name: "credentials"
+            widget: "object"
+            fields:
+              - { label: "Commission Number", name: "commission", widget: "string" }
+              - { label: "Bonded & Insured", name: "bondedInsured", widget: "boolean", default: true }
+              - { label: "Background Checked", name: "backgroundChecked", widget: "boolean", default: true }
+              - { label: "Certifications", name: "certifications", widget: "text" }
+
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name or emoji" }
+      - { label: "Display Order", name: "order", widget: "number", default: 1 }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  - name: "pricing"
+    label: "Pricing"
+    files:
+      - label: "Pricing Information"
+        name: "pricing"
+        file: "src/content/pricing.json"
+        fields:
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Service Name", name: "name", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+          - label: "Travel Fees"
+            name: "travelFees"
+            widget: "object"
+            fields:
+              - { label: "Base Radius", name: "baseRadius", widget: "string" }
+              - { label: "Per Mile Fee", name: "perMile", widget: "string" }
+              - { label: "Notes", name: "notes", widget: "text" }
+          - label: "Payment Methods"
+            name: "paymentMethods"
+            widget: "list"
+            field: { label: "Method", name: "method", widget: "string" }
+          - label: "Deposits"
+            name: "deposits"
+            widget: "object"
+            fields:
+              - { label: "Required", name: "required", widget: "boolean" }
+              - { label: "Amount", name: "amount", widget: "string" }
+              - { label: "Refundable", name: "refundable", widget: "boolean" }
+              - { label: "Notes", name: "notes", widget: "text" }
+
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["General", "Pricing", "Booking", "Service Area", "Legal"] }
+      - { label: "Display Order", name: "order", widget: "number", default: 1 }
+      - { label: "Answer", name: "body", widget: "markdown" }

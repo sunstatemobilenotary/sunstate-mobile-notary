@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import matter from 'gray-matter';
+
+const privacyFile = await readFile(join(process.cwd(), 'src/content/legal/privacy.md'), 'utf-8');
+const { content } = matter(privacyFile);
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy Policy for Sunstate Mobile Notary - how we collect, use, and protect your personal information."
+>
+  <div class="bg-primary-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-lg max-w-none" set:html={content} />
+    </div>
+  </section>
+
+  <section class="section bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Questions About Our Privacy Policy?</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Contact us if you have any concerns or questions about how we handle your information.
+      </p>
+      <a href="/book" class="btn-primary inline-block">Contact Us</a>
+    </div>
+  </section>
+</BaseLayout>

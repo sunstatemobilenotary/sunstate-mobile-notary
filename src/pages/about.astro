@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import businessInfo from '../content/business-info.json';
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about Sunstate Mobile Notary - professional, reliable, and experienced notary services in Florida."
+>
+  <div class="bg-primary-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+      <p class="text-xl text-primary-100">Professional mobile notary services you can trust</p>
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="max-w-4xl mx-auto">
+      <!-- About Section -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">Welcome to {businessInfo.name}</h2>
+        <div class="prose prose-lg max-w-none text-gray-700">
+          <p class="text-lg mb-4">
+            {businessInfo.description}
+          </p>
+          <p class="mb-4">
+            As a commissioned Florida notary public, we provide mobile notary services that bring professional notarization directly to you. Whether you need documents notarized at home, in the office, at a medical facility, or any other location, we're here to make the process convenient and stress-free.
+          </p>
+          <p class="mb-4">
+            <strong>[PLACEHOLDER: Add personal bio about {businessInfo.owner} - years of experience, background, why you became a notary, commitment to service, etc.]</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Credentials -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">Credentials & Qualifications</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card border-l-4 border-primary-600">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Florida Commissioned</h3>
+            <p class="text-gray-700">Official notary public commission from the State of Florida</p>
+            <p class="text-sm text-gray-600 mt-2">Commission #: {businessInfo.credentials.commission}</p>
+          </div>
+
+          {businessInfo.credentials.bondedInsured && (
+            <div class="card border-l-4 border-primary-600">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Bonded & Insured</h3>
+              <p class="text-gray-700">Full bonding and errors & omissions insurance for your protection</p>
+            </div>
+          )}
+
+          {businessInfo.credentials.backgroundChecked && (
+            <div class="card border-l-4 border-primary-600">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Background Screened</h3>
+              <p class="text-gray-700">Comprehensive background check completed for your security and peace of mind</p>
+            </div>
+          )}
+
+          <div class="card border-l-4 border-primary-600">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Professional Certifications</h3>
+            <p class="text-gray-700">{businessInfo.credentials.certifications}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Choose Us -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">Why Choose Us</h2>
+        <div class="space-y-4">
+          <div class="card">
+            <h3 class="text-xl font-bold text-primary-700 mb-2">Convenience</h3>
+            <p class="text-gray-700">We come to you, eliminating the need to find a notary, travel, or wait in line. Service at your location, on your schedule.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-bold text-primary-700 mb-2">Reliability</h3>
+            <p class="text-gray-700">Prompt, professional service with accurate document handling and proper recordkeeping. We show up on time, every time.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-bold text-primary-700 mb-2">Experience</h3>
+            <p class="text-gray-700">Knowledgeable in handling a wide variety of documents and situations, from simple affidavits to complex loan signings.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-bold text-primary-700 mb-2">Flexibility</h3>
+            <p class="text-gray-700">Evening, weekend, and emergency appointments available. We work around your schedule, not the other way around.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-bold text-primary-700 mb-2">Integrity</h3>
+            <p class="text-gray-700">Strict adherence to Florida notary laws and ethical standards. Your documents are handled with the utmost professionalism and confidentiality.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Commitment -->
+      <div class="bg-primary-50 rounded-lg p-8 border-l-4 border-primary-600">
+        <h3 class="text-2xl font-bold text-primary-900 mb-4">Our Commitment to You</h3>
+        <p class="text-gray-700 mb-4">
+          At {businessInfo.name}, we understand that notarization is often needed for important life events and transactions. We're committed to providing:
+        </p>
+        <ul class="space-y-2 text-gray-700">
+          <li>• Professional, courteous service</li>
+          <li>• Accurate and compliant notarizations</li>
+          <li>• Respect for your time and privacy</li>
+          <li>• Clear communication and transparent pricing</li>
+          <li>• Support for clients with mobility challenges or special needs</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section bg-primary-700 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Work Together?</h2>
+      <p class="text-xl mb-8">Contact us today to schedule your mobile notary appointment.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/book" class="bg-white text-primary-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
+          Book Appointment
+        </a>
+        <a href={`mailto:${businessInfo.email}`} class="bg-primary-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-900 transition border-2 border-white">
+          Email: {businessInfo.email}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
