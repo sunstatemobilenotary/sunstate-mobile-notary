@@ -2,28 +2,28 @@
   "name": "Sunstate Mobile Notary",
   "owner": "Rich",
   "email": "rich@sunstatemobilenotary.com",
-  "phone": "[PLACEHOLDER: Add business phone number]",
-  "description": "Professional mobile notary services throughout Florida. We come to you for all your notarization needs.",
+  "phone": "904-234-2263",
+  "description": "Professional mobile notary services for Jacksonville Florida. We come to you for all your notarization needs.",
   "serviceArea": {
     "state": "Florida",
-    "counties": "[PLACEHOLDER: List specific counties served, e.g., Miami-Dade, Broward, Palm Beach]",
-    "cities": "[PLACEHOLDER: List major cities served]",
-    "radius": "[PLACEHOLDER: Service radius in miles, e.g., 50 miles from Miami]"
+    "counties": "Duval, Clay, St Johns, Nassau",
+    "cities": "Jacksonville, Orange Park, Green Cove, St Augustine, Jacksonville Beach, Atlantic Beach, Neptune Beach, Callahan, Yulee",
+    "radius": "40 miles from Jacksonville"
   },
   "hours": {
-    "weekdays": "[PLACEHOLDER: e.g., 9:00 AM - 7:00 PM]",
-    "weekends": "[PLACEHOLDER: e.g., 10:00 AM - 5:00 PM]",
+    "weekdays": "24 Hours",
+    "weekends": "24 Hours",
     "emergency": "24/7 emergency notary services available by appointment"
   },
   "social": {
-    "facebook": "[PLACEHOLDER: Facebook URL or remove if not applicable]",
-    "linkedin": "[PLACEHOLDER: LinkedIn URL or remove if not applicable]",
-    "google": "[PLACEHOLDER: Google Business Profile URL]"
+    "facebook": "",
+    "linkedin": "",
+    "google": ""
   },
   "credentials": {
     "commission": "[PLACEHOLDER: Florida Notary Commission Number]",
     "bondedInsured": true,
     "backgroundChecked": true,
-    "certifications": "[PLACEHOLDER: List any additional certifications, e.g., NSA Certified, NNA Certified]"
+    "certifications": ""
   }
 }
