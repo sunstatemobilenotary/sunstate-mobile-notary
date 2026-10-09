@@ -9,8 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.16.18",
-    "gray-matter": "^4.0.3"
+    "astro": "^4.16.18"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^5.1.3",

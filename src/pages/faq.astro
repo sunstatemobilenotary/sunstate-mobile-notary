@@ -1,34 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { readdir, readFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import matter from 'gray-matter';
+import { getCollection } from 'astro:content';
 
-// Read all FAQ markdown files
-const faqDir = join(process.cwd(), 'src/content/faq');
-const faqFiles = await readdir(faqDir);
-
-const faqs = await Promise.all(
-  faqFiles
-    .filter(file => file.endsWith('.md'))
-    .map(async (file) => {
-      const content = await readFile(join(faqDir, file), 'utf-8');
-      const { data, content: body } = matter(content);
-      return {
-        slug: file.replace('.md', ''),
-        question: data.question,
-        category: data.category || 'General',
-        order: data.order || 999,
-        body
-      };
-    })
-);
+// Get all FAQ entries
+const allFaqs = await getCollection('faq');
 
 // Sort by order
-faqs.sort((a, b) => a.order - b.order);
+const faqs = allFaqs.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
 
 // Group by category
-const categories = [...new Set(faqs.map(faq => faq.category))];
+const categories = [...new Set(faqs.map(faq => faq.data.category))];
 ---
 
 <BaseLayout
@@ -60,8 +41,8 @@ const categories = [...new Set(faqs.map(faq => faq.category))];
 
       <!-- FAQ Items -->
       <div class="space-y-12">
-        {categories.map((category) => {
-          const categoryFaqs = faqs.filter(faq => faq.category === category);
+        {categories.map(async (category) => {
+          const categoryFaqs = faqs.filter(faq => faq.data.category === category);
           return (
             <div id={category.toLowerCase().replace(/\s+/g, '-')}>
               {categories.length > 1 && (
@@ -70,14 +51,19 @@ const categories = [...new Set(faqs.map(faq => faq.category))];
                 </h2>
               )}
               <div class="space-y-6">
-                {categoryFaqs.map((faq) => (
-                  <div class="card">
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">
-                      {faq.question}
-                    </h3>
-                    <div class="prose prose-gray max-w-none text-gray-700" set:html={faq.body} />
-                  </div>
-                ))}
+                {categoryFaqs.map(async (faq) => {
+                  const { Content } = await faq.render();
+                  return (
+                    <div class="card">
+                      <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        {faq.data.question}
+                      </h3>
+                      <div class="prose prose-gray max-w-none text-gray-700">
+                        <Content />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );

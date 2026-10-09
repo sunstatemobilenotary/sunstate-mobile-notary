@@ -1,29 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { readdir, readFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import matter from 'gray-matter';
+import { getCollection } from 'astro:content';
 
-// Read all service markdown files
-const servicesDir = join(process.cwd(), 'src/content/services');
-const serviceFiles = await readdir(servicesDir);
-
-const services = await Promise.all(
-  serviceFiles
-    .filter(file => file.endsWith('.md'))
-    .map(async (file) => {
-      const content = await readFile(join(servicesDir, file), 'utf-8');
-      const { data, content: body } = matter(content);
-      return {
-        slug: file.replace('.md', ''),
-        ...data,
-        body
-      };
-    })
-);
+// Get all service entries
+const allServices = await getCollection('services');
 
 // Sort by order
-services.sort((a, b) => (a.order || 999) - (b.order || 999));
+const services = allServices.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
 ---
 
 <BaseLayout
@@ -40,16 +23,20 @@ services.sort((a, b) => (a.order || 999) - (b.order || 999));
   <section class="section bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="space-y-12">
-        {services.map((service) => (
-          <div id={service.slug} class="card">
-            <h2 class="text-2xl md:text-3xl font-bold text-primary-700 mb-4">
-              {service.title}
-            </h2>
-            <div class="prose prose-lg max-w-none text-gray-700" set:html={service.body} />
-          </div>
-        ))}
+        {services.map(async (service) => {
+          const { Content } = await service.render();
+          return (
+            <div id={service.slug} class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-primary-700 mb-4">
+                {service.data.title}
+              </h2>
+              <div class="prose prose-lg max-w-none text-gray-700">
+                <Content />
+              </div>
+            </div>
+          );
+        })}
       </div>
-
       <div class="mt-12 p-8 bg-primary-50 border-l-4 border-primary-600 rounded">
         <h3 class="text-xl font-bold text-primary-900 mb-3">Need Something Else?</h3>
         <p class="text-gray-700 mb-4">
